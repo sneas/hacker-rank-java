@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e2c37062-76d7-4af4-ad53-593ad1ddb725" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hacker-rank-java.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/io/github/sneas/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="baa8ddd5-2ac7-4fb0-9d4f-8b904c68a31a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,20 +10,26 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1Z74N2F10FnwCCeUB8H2CWmugdf" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1Z75AFEFxZxc0Bboj0c1NmJB30d" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.github.sneas.Main" />
       <module name="hacker-rank-java" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.github.sneas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -43,38 +45,30 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e2c37062-76d7-4af4-ad53-593ad1ddb725" name="Default Changelist" comment="" />
-      <created>1584176754702</created>
+      <changelist id="baa8ddd5-2ac7-4fb0-9d4f-8b904c68a31a" name="Default Changelist" comment="" />
+      <created>1584177146593</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1584176754702</updated>
+      <updated>1584177146593</updated>
     </task>
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1638" height="257" key="GridCell.Tab.0.bottom" timestamp="1584176814517">
-      <screen x="0" y="23" width="1680" height="959" />
+    <state x="184" y="85" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584177442182">
+      <screen x="0" y="23" width="1440" height="802" />
     </state>
-    <state width="1638" height="257" key="GridCell.Tab.0.bottom/0.23.1680.959@0.23.1680.959" timestamp="1584176814517" />
-    <state width="1638" height="257" key="GridCell.Tab.0.center" timestamp="1584176814516">
-      <screen x="0" y="23" width="1680" height="959" />
+    <state x="184" y="85" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.802@0.23.1440.802" timestamp="1584177442182" />
+    <state x="457" y="214" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1584177361231">
+      <screen x="0" y="23" width="1440" height="802" />
     </state>
-    <state width="1638" height="257" key="GridCell.Tab.0.center/0.23.1680.959@0.23.1680.959" timestamp="1584176814516" />
-    <state width="1638" height="257" key="GridCell.Tab.0.left" timestamp="1584176814515">
-      <screen x="0" y="23" width="1680" height="959" />
+    <state x="457" y="214" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1440.802@0.23.1440.802" timestamp="1584177361231" />
+    <state x="569" y="319" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1584177170578">
+      <screen x="0" y="23" width="1440" height="802" />
     </state>
-    <state width="1638" height="257" key="GridCell.Tab.0.left/0.23.1680.959@0.23.1680.959" timestamp="1584176814515" />
-    <state width="1638" height="257" key="GridCell.Tab.0.right" timestamp="1584176814516">
-      <screen x="0" y="23" width="1680" height="959" />
+    <state x="569" y="319" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.23.1440.802@0.23.1440.802" timestamp="1584177170578" />
+    <state x="397" y="256" key="com.intellij.ide.util.TipDialog" timestamp="1584177151777">
+      <screen x="0" y="23" width="1440" height="802" />
     </state>
-    <state width="1638" height="257" key="GridCell.Tab.0.right/0.23.1680.959@0.23.1680.959" timestamp="1584176814516" />
-    <state x="610" y="220" key="RollbackChangesDialog" timestamp="1584176947530">
-      <screen x="0" y="23" width="1680" height="959" />
-    </state>
-    <state x="610" y="220" key="RollbackChangesDialog/0.23.1680.959@0.23.1680.959" timestamp="1584176947530" />
-    <state x="234" y="125" key="new project wizard" timestamp="1584176872926">
-      <screen x="0" y="23" width="1680" height="959" />
-    </state>
-    <state x="234" y="125" key="new project wizard/0.23.1680.959@0.23.1680.959" timestamp="1584176872926" />
+    <state x="397" y="256" key="com.intellij.ide.util.TipDialog/0.23.1440.802@0.23.1440.802" timestamp="1584177151776" />
   </component>
 </project>
