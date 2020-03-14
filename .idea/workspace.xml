@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e2c37062-76d7-4af4-ad53-593ad1ddb725" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hacker-rank-java.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/io/github/sneas/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1Z74N2F10FnwCCeUB8H2CWmugdf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="io.github.sneas.Main" />
+      <module name="hacker-rank-java" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e2c37062-76d7-4af4-ad53-593ad1ddb725" name="Default Changelist" comment="" />
+      <created>1584176754702</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584176754702</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1638" height="257" key="GridCell.Tab.0.bottom" timestamp="1584176814517">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state width="1638" height="257" key="GridCell.Tab.0.bottom/0.23.1680.959@0.23.1680.959" timestamp="1584176814517" />
+    <state width="1638" height="257" key="GridCell.Tab.0.center" timestamp="1584176814516">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state width="1638" height="257" key="GridCell.Tab.0.center/0.23.1680.959@0.23.1680.959" timestamp="1584176814516" />
+    <state width="1638" height="257" key="GridCell.Tab.0.left" timestamp="1584176814515">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state width="1638" height="257" key="GridCell.Tab.0.left/0.23.1680.959@0.23.1680.959" timestamp="1584176814515" />
+    <state width="1638" height="257" key="GridCell.Tab.0.right" timestamp="1584176814516">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state width="1638" height="257" key="GridCell.Tab.0.right/0.23.1680.959@0.23.1680.959" timestamp="1584176814516" />
+    <state x="610" y="220" key="RollbackChangesDialog" timestamp="1584176947530">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state x="610" y="220" key="RollbackChangesDialog/0.23.1680.959@0.23.1680.959" timestamp="1584176947530" />
+    <state x="234" y="125" key="new project wizard" timestamp="1584176872926">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state x="234" y="125" key="new project wizard/0.23.1680.959@0.23.1680.959" timestamp="1584176872926" />
+  </component>
+</project>
