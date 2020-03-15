@@ -18,5 +18,7 @@ public class Main {
         tree.left = new Node(2, 0);
         tree.right = new Node(4, 1);
         tree.right.right = new Node(5, 0);
+
+        System.out.print("It's working");
     }
 }
