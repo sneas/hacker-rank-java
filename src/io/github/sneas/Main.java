@@ -6,48 +6,51 @@ public class Main {
 
     static long solve(int[] arr) {
         Stack<Integer> stack = new Stack<Integer>();
-        Hashtable<Integer, Integer> hash =
-                new Hashtable<Integer, Integer>();
+        long[] left = new long[arr.length];
 
-        long result = 0;
+        for (int i = 0; i < arr.length; i++) {
+            long ai = arr[i];
 
-        stack.push(arr[0]);
-        hash.put(arr[0], 1);
-
-        for (int i = 1; i < arr.length; i++) {
-            int h = arr[i];
-
-            while(!stack.empty() && stack.peek() < h) {
-                int s = stack.pop();
-                long h1 = hash.get(s);
-                result += (h1 - 1) * h1;
-                hash.replace(s, 0);
+            while(!stack.isEmpty() && arr[stack.peek()] <= ai) {
+                stack.pop();
             }
 
-            if (stack.empty() || stack.peek() > h) {
-                stack.push(h);
-            }
+            long li = stack.isEmpty() ? 0 : stack.peek() + 1;
+            left[i] = li;
 
-            if (hash.containsKey(h)) {
-                hash.replace(h, hash.get(h) + 1);
-            } else {
-                hash.put(h, 1);
-            }
+            stack.push(i);
         }
 
-        while(!stack.empty()) {
-            int s = stack.pop();
-            long h1 = hash.get(s);
-            result += (h1 - 1) * h1;
+        stack.clear();
+
+        long max = 0;
+
+        for (int i = arr.length - 1; i >= 0; i--) {
+            int ai = arr[i];
+
+            while(!stack.isEmpty() && arr[stack.peek()] <= ai) {
+                stack.pop();
+            }
+
+            long ri = stack.isEmpty() ? 0 : stack.peek() + 1;
+
+            long indexProduct = ri * left[i];
+
+            if (indexProduct > max) {
+                max = indexProduct;
+            }
+
+            stack.push(i);
         }
 
-        return result;
+        return max;
     }
 
     public static void main(String[] args) {
-        int[] input = new int[300000];
-        Arrays.fill(input, 1);
-        long result  = solve(input);
+        int[] arr = new int[100000];
+        Arrays.fill(arr, 1000000000);
+        arr[50000] = 1000;
+        long result  = solve(arr);
         System.out.println(result);
     }
 }
