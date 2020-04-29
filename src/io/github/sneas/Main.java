@@ -4,50 +4,53 @@ import java.util.*;
 
 public class Main {
 
-    static long solve(int[] arr) {
-        Stack<Integer> stack = new Stack<Integer>();
-        Hashtable<Integer, Integer> hash =
-                new Hashtable<Integer, Integer>();
+    static int[] climbingLeaderboard(int[] scores, int[] alice) {
+        List<Integer> distinct = new ArrayList<>();
 
-        long result = 0;
-
-        stack.push(arr[0]);
-        hash.put(arr[0], 1);
-
-        for (int i = 1; i < arr.length; i++) {
-            int h = arr[i];
-
-            while(!stack.empty() && stack.peek() < h) {
-                int s = stack.pop();
-                long h1 = hash.get(s);
-                result += (h1 - 1) * h1;
-                hash.replace(s, 0);
-            }
-
-            if (stack.empty() || stack.peek() > h) {
-                stack.push(h);
-            }
-
-            if (hash.containsKey(h)) {
-                hash.replace(h, hash.get(h) + 1);
-            } else {
-                hash.put(h, 1);
+        for (int score: scores) {
+            if (distinct.isEmpty() || distinct.get(distinct.size() - 1) != score) {
+                distinct.add(score);
             }
         }
 
-        while(!stack.empty()) {
-            int s = stack.pop();
-            long h1 = hash.get(s);
-            result += (h1 - 1) * h1;
+        int[] result = new int[alice.length];
+
+        int j = distinct.size() - 1;
+
+        for (int i = 0; i < alice.length; i++) {
+            int play = alice[i];
+            int rank = -1;
+
+            while (j >= 0) {
+                int dj = distinct.get(j);
+                if (dj == play) {
+                    rank = j + 1;
+                    break;
+                }
+
+                if (dj > play) {
+                    rank = j + 2;
+                    break;
+                }
+
+                j--;
+            };
+
+            if (rank == -1 && j == -1) {
+                rank = 1;
+            }
+
+            result[i] = rank;
         }
 
         return result;
     }
 
     public static void main(String[] args) {
-        int[] input = new int[300000];
-        Arrays.fill(input, 1);
-        long result  = solve(input);
-        System.out.println(result);
+        int[] result  = climbingLeaderboard(
+                    new int[]{100, 100, 50, 40, 40, 20, 10},
+                    new int[]{5, 25, 50, 120}
+                );
+        System.out.println(Arrays.toString(result));
     }
 }
