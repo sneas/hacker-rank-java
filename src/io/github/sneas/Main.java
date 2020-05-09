@@ -3,88 +3,37 @@ package io.github.sneas;
 import java.util.*;
 
 public class Main {
-    static void generateSquare(int[][] s, LinkedList<Integer> results, LinkedList<Integer> availableItems, int index, int[] combination) {
-        if (index == 9) {
-            int magicSum = 0;
-            int steps = 0;
-            int diagonal1 = 0;
-            for (int i = 0; i < 3; i++) {
-                int horizontalSum = 0;
-                int verticalSum = 0;
-                for (int j = 0; j < 3; j++) {
-                    int magicIJ = combination[i * 3 + j];
-                    steps += Math.abs(s[i][j] - magicIJ);
-                    horizontalSum += magicIJ;
-                    verticalSum += combination[j * 3 + i];
-                    if (i == j) {
-                        diagonal1 += combination[i * 3 + j];
-                    }
-                }
-                if (magicSum == 0) {
-                    magicSum = horizontalSum;
-                }
+    public static int nonDivisibleSubset(int k, List<Integer> s) {
+        Hashtable<Integer, Integer> h = new Hashtable<>();
 
-                if (horizontalSum != magicSum) {
-                    return;
-                }
-
-                if (verticalSum != magicSum) {
-                    return;
-                }
-            }
-
-            if (diagonal1 != magicSum) {
-                return;
-            }
-
-            int diagonal2 = 0;
-
-            for (int i = 0; i < 3; i++) {
-                diagonal2 += combination[i * 3 + (2 - i)];
-            }
-
-            if (diagonal2 != magicSum) {
-                return;
-            }
-
-            results.add(steps);
-
-            return;
+        for (int i: s) {
+            int mod = i % k;
+            h.put(mod, h.getOrDefault(mod, 0) + 1);
         }
 
-        for (Integer item: availableItems) {
-            LinkedList<Integer> newAvailableItems = (LinkedList)availableItems.clone();
-            newAvailableItems.remove(item);
-            combination[index] = item;
-            generateSquare(s, results, newAvailableItems, index + 1, combination);
-        }
-    }
+        int count = 0;
 
-    static int formingMagicSquare(int[][] s) {
-        LinkedList<Integer> availableItems = new LinkedList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
-        int index = 0;
-        int[] combination = new int[9];
-        LinkedList<Integer> results = new LinkedList<Integer>();
-
-        generateSquare(s, results, availableItems, index, combination);
-
-        int min = 10000000;
-
-        for (int steps: results) {
-            if (steps < min) {
-                min = steps;
-            }
+        for (int i = k - 1; i > k / 2; i--) {
+            count += Math.max(
+                    h.getOrDefault(i, 0),
+                    h.getOrDefault(k - i, 0)
+            );
         }
 
-        return min;
+        if (h.containsKey(0)) {
+            count += 1;
+        }
+
+        if (k % 2 == 0 && h.containsKey(k / 2)) {
+            count += 1;
+        }
+
+        return count;
     }
 
     public static void main(String[] args) {
-        int result  = formingMagicSquare(new int[][]{
-                {4, 8, 2},
-                {4, 5, 7},
-                {6, 1, 6}
-        });
+//        int result  = nonDivisibleSubset(3, new ArrayList<>(Arrays.asList(1, 7, 2, 4)));
+        int result  = nonDivisibleSubset(4, new ArrayList<>(Arrays.asList(19, 10, 12, 10, 24, 25, 22)));
         System.out.println(result);
     }
 }
