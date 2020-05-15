@@ -2,48 +2,38 @@ package io.github.sneas;
 
 public class Main {
 
-    static int twoStacks(int x, int[] a, int[] b) {
-        int aSum = 0, totalSteps = 0;
-        int maxSteps = 0;
-        int ai, bi;
-
-        for (ai = 0; ai < a.length; ai++) {
-            if (aSum + a[ai] > x) {
-                break;
+    static void minimumBribes(int[] q) {
+        int result = 0;
+        for (int i = q.length - 1; i >= 0; i--) {
+            if (q[i] <= i + 1) {
+                continue;
             }
 
-            aSum += a[ai];
-            totalSteps++;
-            maxSteps = totalSteps;
-        }
+            while (q[i] > i + 1) {
+                int jump = q[i] - (i + 1);
 
-        int bSum = 0;
+                if (jump > 2) {
+                    System.out.println("Too chaotic");
+                    return;
+                }
 
-        for (bi = 0; bi < b.length; bi++) {
-            if (bSum + b[bi] > x) {
-                break;
-            }
+                result += jump;
 
-            bSum += b[bi];
-
-            totalSteps++;
-
-            while (aSum + bSum > x) {
-                ai--;
-                aSum -= a[ai];
-                totalSteps--;
-            }
-
-            if (totalSteps > maxSteps) {
-                maxSteps = totalSteps;
+                for (int j = 0; j < jump; j++) {
+                    int qj = q[i + j];
+                    q[i + j] = q[i + j + 1];
+                    q[i + j + 1] = qj;
+                }
             }
         }
 
-        return maxSteps;
+        System.out.println(result);
     }
 
+
     public static void main(String[] args) {
-        int result = twoStacks(30, new int[]{10, 5, 5, 2, 1, 7, 3}, new int[]{5, 7, 5, 3, 7, 7, 5});
-        System.out.println(result);
+//        minimumBribes(new int[]{2, 1, 5, 3, 4});
+        minimumBribes(new int[]{1, 2, 5, 3, 7, 8, 6, 4});
+//        System.out.println(result);
     }
 }
