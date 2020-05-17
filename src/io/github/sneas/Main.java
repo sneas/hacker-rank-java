@@ -3,37 +3,31 @@ package io.github.sneas;
 import java.util.*;
 
 public class Main {
-    public static int nonDivisibleSubset(int k, List<Integer> s) {
+    static int minimumSwaps(int[] arr) {
+        int result = 0;
         Hashtable<Integer, Integer> h = new Hashtable<>();
 
-        for (int i: s) {
-            int mod = i % k;
-            h.put(mod, h.getOrDefault(mod, 0) + 1);
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == i+1) {
+                continue;
+            }
+
+            while (h.containsKey(arr[i]) && arr[i] != i+1) {
+                result++;
+                int ai = arr[i];
+                arr[i] = h.get(ai);
+                h.remove(ai);
+                h.put(i+1, arr[i]);
+            }
+
+            h.put(i+1, arr[i]);
         }
-
-        int count = 0;
-
-        for (int i = k - 1; i > k / 2; i--) {
-            count += Math.max(
-                    h.getOrDefault(i, 0),
-                    h.getOrDefault(k - i, 0)
-            );
-        }
-
-        if (h.containsKey(0)) {
-            count += 1;
-        }
-
-        if (k % 2 == 0 && h.containsKey(k / 2)) {
-            count += 1;
-        }
-
-        return count;
+        return result;
     }
 
     public static void main(String[] args) {
-//        int result  = nonDivisibleSubset(3, new ArrayList<>(Arrays.asList(1, 7, 2, 4)));
-        int result  = nonDivisibleSubset(4, new ArrayList<>(Arrays.asList(19, 10, 12, 10, 24, 25, 22)));
+        int result  = minimumSwaps(new int[]{2, 3, 4, 1, 5});
+//        int result  = minimumSwaps(new int[]{1, 3, 5, 2, 4, 6, 7});
         System.out.println(result);
     }
 }
