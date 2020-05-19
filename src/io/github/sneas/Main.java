@@ -3,31 +3,31 @@ package io.github.sneas;
 import java.util.*;
 
 public class Main {
-    // Complete the checkMagazine function below.
-    static void checkMagazine(String[] magazine, String[] note) {
-        Hashtable<String, Integer> h = new Hashtable<>();
+    // Complete the twoStrings function below.
+    static String twoStrings(String s1, String s2) {
+        String l = s1.length() > s2.length() ? s1 : s2;
+        String s = s1.length() <= s2.length() ? s1 : s2;
+        Hashtable<Character, Boolean> h = new Hashtable<>();
 
-        for (String s: magazine) {
-            h.put(s, h.getOrDefault(s, 0) + 1);
+        for(Character c: l.toCharArray()) {
+            h.put(c, true);
         }
 
-        for (String s: note) {
-            if (h.getOrDefault(s, 0) == 0) {
-                System.out.println("No");
-                return;
+        for (Character c: s.toCharArray()) {
+            if (h.getOrDefault(c, false)) {
+                return "YES";
             }
-
-            h.put(s, h.get(s) - 1);
         }
 
-        System.out.println("Yes");
+        return "NO";
     }
 
     public static void main(String[] args) {
-        checkMagazine(
-                new String[]{"give", "me", "one", "grand", "today", "night"},
-                new String[]{"give", "me", "one", "grand", "today"}
+        String result = twoStrings(
+                "hello",
+                "world"
         );
 
+        System.out.println(result);
     }
 }
