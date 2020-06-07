@@ -16,12 +16,8 @@ public class Main {
         for (long number: arr) {
             result += (number % r == 0) ? pairs.getOrDefault(number / r, 0L) : 0;
 
-            if (pairs.containsKey(number)) {
-                pairs.put(number, pairs.get(number)
-                        + ((number % r == 0) ? amount.getOrDefault(number / r, 0L) : 0));
-            }
-
-            pairs.put(number * r, pairs.getOrDefault(number * r, 0L));
+            pairs.put(number, pairs.getOrDefault(number, 0L)
+                    + ((number % r == 0) ? amount.getOrDefault(number / r, 0L) : 0));
 
             amount.put(number, amount.getOrDefault(number, 0L) + 1);
         }
