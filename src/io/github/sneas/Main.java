@@ -3,59 +3,79 @@ package io.github.sneas;
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
 public class Main {
-    static long countTriplets(List<Long> arr, long r) {
-        long result = 0;
+    static List<Integer> freqQuery(List<List<Integer>> queries) {
+        List<Integer> result = new ArrayList<>();
+        Hashtable<Integer, Integer> numbers = new Hashtable<>();
+        Hashtable<Integer, Integer> frequencies = new Hashtable<>();
 
-        Hashtable<Long, Long> pairs = new Hashtable<>();
-        Hashtable<Long, Long> amount = new Hashtable<>();
+        for (List<Integer> query: queries) {
+            int action = query.get(0);
+            int value = query.get(1);
+            int prevFrequency;
 
-        for (long number: arr) {
-            result += (number % r == 0) ? pairs.getOrDefault(number / r, 0L) : 0;
+            switch (action) {
+                case 1:
+                    prevFrequency = numbers.getOrDefault(value, 0);
+                    frequencies.put(prevFrequency, frequencies.getOrDefault(prevFrequency, 1) - 1);
+                    frequencies.put(prevFrequency + 1, frequencies.getOrDefault(prevFrequency + 1, 0) + 1);
+                    numbers.put(value, prevFrequency + 1);
+                    break;
+                case 2:
+                    prevFrequency = numbers.getOrDefault(value, 0);
 
-            pairs.put(number, pairs.getOrDefault(number, 0L)
-                    + ((number % r == 0) ? amount.getOrDefault(number / r, 0L) : 0));
+                    if (prevFrequency == 0) {
+                        break;
+                    }
 
-            amount.put(number, amount.getOrDefault(number, 0L) + 1);
+                    frequencies.put(prevFrequency, frequencies.get(prevFrequency) - 1);
+                    frequencies.put(prevFrequency - 1, frequencies.get(prevFrequency - 1) + 1);
+                    numbers.put(value, prevFrequency - 1);
+                    break;
+                default:
+                    result.add(frequencies.getOrDefault(value, 0) == 0 ? 0 : 1);
+            }
         }
 
         return result;
     }
 
     public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("/Users/dima/Documents/hacker-rank-java/t2.txt"));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("./t2.txt"));
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        String[] nr = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
+        int q = Integer.parseInt(bufferedReader.readLine().trim());
 
-        int n = Integer.parseInt(nr[0]);
+        List<List<Integer>> queries = new ArrayList<>();
 
-        long r = Long.parseLong(nr[1]);
+        IntStream.range(0, q).forEach(i -> {
+            try {
+                queries.add(
+                        Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
+                                .map(Integer::parseInt)
+                                .collect(toList())
+                );
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
-        List<Long> arr = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-                .map(Long::parseLong)
-                .collect(toList());
+        List<Integer> ans = freqQuery(queries);
 
-        long ans = countTriplets(arr, r);
-
-        bufferedWriter.write(String.valueOf(ans));
-        bufferedWriter.newLine();
+        bufferedWriter.write(
+                ans.stream()
+                        .map(Object::toString)
+                        .collect(joining("\n"))
+                        + "\n"
+        );
 
         bufferedReader.close();
         bufferedWriter.close();
     }
-
-//    public static void main(String[] args) {
-//        long[] arr = {1, 3, 9, 9, 27, 81};
-////        long[] arr = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,};
-//
-//        List<Long> list = Arrays.stream(arr).boxed().collect(Collectors.toList());
-//
-//        long result = countTriplets(list, 3);
-//
-//        System.out.println(result);
-//    }
 }
