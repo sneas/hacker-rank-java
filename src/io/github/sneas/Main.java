@@ -2,38 +2,26 @@ package io.github.sneas;
 
 public class Main {
 
-    static void minimumBribes(int[] q) {
-        int result = 0;
-        for (int i = q.length - 1; i >= 0; i--) {
-            if (q[i] <= i + 1) {
-                continue;
-            }
-
-            while (q[i] > i + 1) {
-                int jump = q[i] - (i + 1);
-
-                if (jump > 2) {
-                    System.out.println("Too chaotic");
-                    return;
-                }
-
-                result += jump;
-
-                for (int j = 0; j < jump; j++) {
-                    int qj = q[i + j];
-                    q[i + j] = q[i + j + 1];
-                    q[i + j + 1] = qj;
+    static void countSwaps(int[] a) {
+        int tally = 0;
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a.length - 1; j++) {
+                // Swap adjacent elements if they are in decreasing order
+                if (a[j] > a[j + 1]) {
+                    tally++;
+                    int j1 = a[j + 1];
+                    a[j + 1] = a[j];
+                    a[j] = j1;
                 }
             }
+
         }
-
-        System.out.println(result);
+        System.out.printf("Array is sorted in %s swaps.\n", tally);
+        System.out.printf("First Element: %s\n", a[0]);
+        System.out.printf("Last Element: %s\n", a[a.length - 1]);
     }
 
-
     public static void main(String[] args) {
-//        minimumBribes(new int[]{2, 1, 5, 3, 4});
-        minimumBribes(new int[]{1, 2, 5, 3, 7, 8, 6, 4});
-//        System.out.println(result);
+        countSwaps(new int[]{3, 2, 1});
     }
 }
