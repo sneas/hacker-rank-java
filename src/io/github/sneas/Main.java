@@ -1,27 +1,26 @@
 package io.github.sneas;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Main {
 
-    static void countSwaps(int[] a) {
-        int tally = 0;
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < a.length - 1; j++) {
-                // Swap adjacent elements if they are in decreasing order
-                if (a[j] > a[j + 1]) {
-                    tally++;
-                    int j1 = a[j + 1];
-                    a[j + 1] = a[j];
-                    a[j] = j1;
-                }
+    static int maximumToys(int[] prices, int k) {
+        int result = 0;
+        Arrays.sort(prices);
+        for(int price: prices) {
+            k -= price;
+            if (k < 0) {
+                break;
             }
-
+            result++;
         }
-        System.out.printf("Array is sorted in %s swaps.\n", tally);
-        System.out.printf("First Element: %s\n", a[0]);
-        System.out.printf("Last Element: %s\n", a[a.length - 1]);
+
+        return result;
     }
 
     public static void main(String[] args) {
-        countSwaps(new int[]{3, 2, 1});
+        int result = maximumToys(new int[]{1, 12, 5, 111, 200, 1000, 10}, 50);
+        System.out.println(result);
     }
 }
